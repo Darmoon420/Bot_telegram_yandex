@@ -369,7 +369,6 @@ def set_city(update, context):
     if str(cur.execute(f"""SELECT city FROM Users WHERE chat_id = {update.message.chat_id}""").fetchone()) == '(None,)':
         cur.execute(f"UPDATE Users SET city = '{update.message.text}' WHERE chat_id = {update.message.chat_id}")
         con.commit()
-        print(update.message.text)
 
 
 def task(context):
@@ -422,7 +421,6 @@ def start(update, context):
 
     update.message.reply_text("Укажите ваш город")
     text_handler = MessageHandler(Filters.text, set_city)
-    print(text_handler)
 
     cur.execute(f"INSERT INTO Users(chat_id) VALUES({update.message.chat_id})")
     con.commit()
