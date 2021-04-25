@@ -53,15 +53,15 @@ def help(update, context):
         f"\n/time - выводит время на сервере"
         f"\n/date - выводит дату на сервере"
         f"\n/wikipedia - выводит данные из википедии. Использование:  /wikipedia <запрос>"
-        f"\n/weather - выводит погоду в указанном гроде. Использование: /weather <Город>"
+        f"\n/weather - выводит погоду в указанном городе. Использование: /weather <Город>"
         f"\n/set_timer - устанавливает таймер. Использование: /set <секунд>"
-        f"\n/unset - удаляет текщий тамер"
+        f"\n/unset - удаляет текущий таймер"
         f"\n/new_task -  добавляет новую задачу в список. Использование: /new_task <задача>"
         f"\n/tasks - выводит список задач"
-        f"\n/clear_tasks - удаляют все задачи из списка"
+        f"\n/clear_tasks - удаляет все задачи из списка"
         f"\n/prices - выводит курс валют"
-        f"\n/game - запуск игры камень, ножницы, бамага"
-        f"\n/uravnenie - выодит результат решения квадратного уравнения. Использование: /uravnenie <a b c>"
+        f"\n/game - запуск игры камень, ножницы, бумага"
+        f"\n/uravnenie - выводит результат решения квадратного уравнения. Использование: /uravnenie <a b c>"
         f"\n/gipotenusa - выводит гипотенузу. Использование: /gipotenusa <a c>", reply_markup=reply_markup_buttons_start
     )
 
@@ -298,8 +298,10 @@ def wiki(update, context):
     Возвращает данные из википедии
     """
     if context.args:
-        update.message.reply_text(wikipedia.summary(' '.join(context.args)))
-
+        try:
+            update.message.reply_text(wikipedia.summary(' '.join(context.args)))
+        except BaseException:
+            update.message.reply_text("Ничего не найдено")
     else:
         update.message.reply_text("Вы не указали ключевое слово.")
         update.message.reply_text("Использование:  /wikipedia <запрос>")
