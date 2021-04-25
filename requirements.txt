@@ -1,0 +1,5 @@
+DateTime==4.3
+python-telegram-bot==13.4.1
+requests==2.25.1
+SQLAlchemy==1.4.2
+wikipedia==1.4.0
