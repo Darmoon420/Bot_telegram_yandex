@@ -240,7 +240,7 @@ def game(update, context):
 
 def button(update: Update, _: CallbackContext):
     """
-    Обрабатывет callback_data функции game
+    Обрабатывет callback_data функций
     """
     lst = ['камень', 'ножницы', 'бумагу']
     bot_choice = randint(0, 2)
@@ -419,6 +419,7 @@ def start(update, context):
         f"\n/game"
         f"\n/uravnenie"
         f"\n/gipotenusa"
+        f"\n/help"
     )
 
     update.message.reply_text("Укажите ваш город")
